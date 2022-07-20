@@ -81,3 +81,16 @@ function generateQA() {
         }
     }
 }
+
+function startGame() {
+    isPlaying = true;
+    playTime = 5;
+    hide(gameoverElem);
+    setText(startStopBtn, "Stop Game");
+    show(timeremainingElem);
+    setText(scoreValueElem, score);
+    setText(timeremainingValueElem, playTime);
+    initializeTimer();
+    addOptionsListners();
+    generateQA();
+}
