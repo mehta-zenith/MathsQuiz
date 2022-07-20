@@ -16,3 +16,19 @@ let isPlaying = false;
 let playTime;
 let timeRemainingInterval;
 let correctAnsElemNumber;
+
+initialize();
+
+function initialize() {
+    startStopBtn.addEventListener('click', handleStartStop);
+}
+
+
+
+function handleStartStop(evt) {
+    if (isPlaying) {
+        window.location.reload();
+    } else {
+        startGame();
+    }
+}
