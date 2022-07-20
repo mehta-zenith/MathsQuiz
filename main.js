@@ -60,7 +60,7 @@ function generateQA() {
     let correctAns = num1 * num2;
     setText(questionElem, `${num1} x ${num2}`);
 
-    correctAnsElemNumber = getRandom(9);
+    correctAnsElemNumber = getRandom(3);
     let correctAnsElem = getAnswerElement(correctAnsElemNumber);
 
     setText(correctAnsElem, correctAns);
@@ -91,7 +91,7 @@ function startGame() {
     setText(scoreValueElem, score);
     setText(timeremainingValueElem, playTime);
     initializeTimer();
-    addOptionsListners();
+    addOptionsListener();
     generateQA();
 }
 
@@ -104,7 +104,7 @@ function stopGame() {
     setText(scoreValueElem, "");
     setText(startStopBtn, 'Start Game');
     clearInterval(timeRemainingInterval);
-    removeOptionListerns();
+    removeOptionListeners();
 }
 
 function initializeTimer() {
@@ -115,4 +115,42 @@ function initializeTimer() {
             stopGame();
         }
     }, 1000);
+}
+
+// HELPERS
+function show(elem) {
+    elem.style.display = "block";
+}
+
+function hide(elem) {
+    elem.style.display = "none";
+}
+
+function setText(elem, text) {
+    elem.innerHTML = text;
+}
+
+function getAnswerElement(number) {
+    if (number === 1) return box1Elem;
+    if (number === 2) return box2Elem;
+    if (number === 3) return box3Elem;
+    if (number === 4) return box4Elem;
+}
+
+function getRandom(NMinus1) {
+    return (1 + Math.round(Math.random() * NMinus1));
+}
+
+function addOptionsListener() {
+    box1Elem.addEventListener('click', checkAnswer);
+    box2Elem.addEventListener('click', checkAnswer);
+    box3Elem.addEventListener('click', checkAnswer);
+    box4Elem.addEventListener('click', checkAnswer);
+}
+
+function removeOptionListeners() {
+    box1Elem.removeEventListener('click', checkAnswer);
+    box2Elem.removeEventListener('click', checkAnswer);
+    box3Elem.removeEventListener('click', checkAnswer);
+    box4Elem.removeEventListener('click', checkAnswer);
 }
