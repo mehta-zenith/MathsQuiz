@@ -94,3 +94,15 @@ function startGame() {
     addOptionsListners();
     generateQA();
 }
+
+function stopGame() {
+    setText(gameoverElem, `<p>Game Over</p><p>Your Score ${score}</p>`);
+    hide(timeremainingElem);
+    show(gameoverElem);
+    isPlaying = false;
+    score = 0;
+    setText(scoreValueElem, "");
+    setText(startStopBtn, 'Start Game');
+    clearInterval(timeRemainingInterval);
+    removeOptionListerns();
+}
