@@ -53,3 +53,31 @@ function checkAnswer(evt) {
         }, 500);
     }
 }
+
+function generateQA() {
+    let num1 = getRandom(9);
+    let num2 = getRandom(9);
+    let correctAns = num1 * num2;
+    setText(questionElem, `${num1} x ${num2}`);
+
+    correctAnsElemNumber = getRandom(9);
+    let correctAnsElem = getAnswerElement(correctAnsElemNumber);
+
+    setText(correctAnsElem, correctAns);
+    let answers = [correctAns];
+
+    for (let i = 1; i <= 4; i++) {
+        if (i !== correctAnsElemNumber) {
+            let wrongAns;
+            do {
+                const worngNum1 = getRandom(9);
+                const worngNum2 = getRandom(9);
+                wrongAns = worngNum1 * worngNum2;
+            } while (answers.indexOf(wrongAns) !== -1);
+
+            // wrongAns will have the value which i can use
+            answers.push(wrongAns);
+            setText(getAnswerElement(i), wrongAns);
+        }
+    }
+}
