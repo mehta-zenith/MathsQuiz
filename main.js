@@ -106,3 +106,13 @@ function stopGame() {
     clearInterval(timeRemainingInterval);
     removeOptionListerns();
 }
+
+function initializeTimer() {
+    timeRemainingInterval = setInterval(function() {
+        playTime--;
+        setText(timeremainingValueElem, playTime);
+        if (playTime <= 0) {
+            stopGame();
+        }
+    }, 1000);
+}
