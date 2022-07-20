@@ -24,11 +24,32 @@ function initialize() {
 }
 
 
-
+// EVENT HANDLERS
 function handleStartStop(evt) {
     if (isPlaying) {
         window.location.reload();
     } else {
         startGame();
+    }
+}
+
+// GAME LOGIC FUNCTIONS
+function checkAnswer(evt) {
+    const clickedElementNumber = parseInt(evt.target.dataset.position);
+    if (clickedElementNumber === correctAnsElemNumber) {
+        score++;
+        setText(scoreValueElem, score);
+        show(correctElem);
+        hide(wrongElem);
+        generateQA();
+        setTimeout(function() {
+            hide(correctElem);
+        }, 500);
+    } else {
+        show(wrongElem);
+        hide(correctElem);
+        setTimeout(function() {
+            hide(wrongElem);
+        }, 500);
     }
 }
